@@ -24,5 +24,11 @@ func callSayHelloClientStreaming(client pb.GreetServiceClient) {
 			return
 		}
 	}
-	stream.CloseSend()
+	res, err := stream.CloseAndRecv()
+	if err != nil {
+		fmt.Println("Error while receiving response from stream:", err)
+		return
+	}
+	fmt.Println("Response from server:", res.GetMessages())
+
 }

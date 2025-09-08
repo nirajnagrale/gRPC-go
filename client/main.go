@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	port = ":8083"
+	port = ":8084"
 )
 
 func main() {
@@ -20,7 +20,8 @@ func main() {
 	}
 	defer conn.Close()
 	client := pb.NewGreetServiceClient(conn)
-	callSayHello(client)
+	//callSayHello(client)
 	//callSayHelloServerStreaming(client)
-
+	//callSayHelloClientStreaming(client)
+	callBidirectionalStreaming(client)
 }
